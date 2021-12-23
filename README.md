@@ -63,7 +63,8 @@ https://www.artonhanger.com/
 
 
 # Simple Entity Diagram
--※GetterSetter 및 생성자가 생략되어있습니다.
+※GetterSetter 및 생성자가 생략되어있습니다.
+- App을 제외한 현재 사용되는 업로드 모델의 Entity만 포함하였습니다.
 
 ![Main](https://user-images.githubusercontent.com/13278955/147191307-886ed001-8e70-4852-b972-2b129e1a7e29.jpg)
 
