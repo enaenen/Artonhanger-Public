@@ -1,0 +1,50 @@
+cloud:
+  aws:
+    credentials:
+      accessKey: CLOUD_AWS_CREDENTIALS_ACCESS_KEY
+      secretKey: CLOUD_AWS_CREDENTIALS_SECRET_KEY
+    s3:
+      bucket: CLOUD_AWS_S3_BUCKET
+      prefix:
+        artwork-image: "artworkImages/"
+        profile-image:
+          default: "profileImages/"
+          kakao: "profileImages/kakao/"
+    region:
+      static: ap-northeast-2
+    cloudFront :
+      domain : CLOUD_AWS_CLOUD_FRONT_DOMAIN
+    domain-uri: CLOUD_AWS_DOMAIN_URI
+
+spring:
+  servlet:
+    multipart:
+      file-size-threshold: 50MB
+      #      location: C:/Temp
+      max-file-size: 10MB
+      max-request-size: 80MB
+  #      enabled: true
+  mail:
+    host: SPRING_MAIL_HOST
+    port: 8888 # SPRING_MAIL_PORT
+    username: SPRING_MAIL_USERNAME
+    password: SPRING_MAIL_PASSWORD
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+logging.level:
+  org.springframework.web: WARN
+  guru.springframework.controllers: WARN
+  org.hibernate.SQL: WARN
+  io.swagger.models.parameters.AbstractSerializableParameter : error
+
+thirdPartyProperties:
+  imweb-api:
+    key: THIRD_PARTY_PROPERTIES_IMWEB_API_KEY
+    secret: THIRD_PARTY_PROPERTIES_IMWEB_API_SECRET
+

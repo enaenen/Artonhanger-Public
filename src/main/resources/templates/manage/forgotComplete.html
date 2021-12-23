@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>비밀번호 찾기 완료</title>
+
+  <!-- Font Icon -->
+  <link rel="stylesheet" href="/assets/register/fonts/material-icon/css/material-design-iconic-font.min.css">
+  <link rel="stylesheet" href="/assets/register/vendor/nouislider/nouislider.min.css">
+
+  <!-- Main css -->
+  <link rel="stylesheet" href="/assets/register/css/style.css">
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="main">
+
+  <div class="container">
+    <div class="signup-content">
+      <div class="signup-form">
+          <div class="form-row">
+            <div class="form-group">
+              <div class="form-input">
+                <label for="email" class="" >비밀번호 초기화</label>
+                <input type="text" th:value="${email}" disabled name="email" id="email" placeholder="mail"/>
+                <span> 위 메일로 초기화된 비밀번호를 발송하였습니다. 메일함을 확인해주세요.</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-submit">
+            <a th:href="@{/login}" class="">
+              <input type="button" value="확인" class="submit" id="submit" name="ok"/>
+            </a>
+          </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- JS -->
+<script src="/assets/register/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/register/vendor/nouislider/nouislider.min.js"></script>
+<script src="/assets/register/vendor/wnumb/wNumb.js"></script>
+<script src="/assets/register/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="/assets/register/vendor/jquery-validation/dist/additional-methods.min.js"></script>
+<script src="/assets/register/js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

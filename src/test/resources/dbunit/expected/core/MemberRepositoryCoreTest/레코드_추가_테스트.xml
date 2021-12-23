@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <member id="1" email="oh11111@gmail.com" name="오*진" nickname="오*진" password="1111" profile_img="https://d3cr9r836ml7sc.cloudfront.net/profileImages/3/1111" is_enable="true" alarm_agreement="true" />
+    <member id="2" email="kimc11111@gmail.com" name="김*원" nickname="김*원" password="2222" is_enable="false" alarm_agreement="true" />
+    <member id="3" email="sweet111111@naver.com" name="박*현" nickname="박*현" password="3333" profile_img="https://d3cr9r836ml7sc.cloudfront.net/profileImages/5/3333" is_enable="true" alarm_agreement="true" />
+    <member id="4" email="hanby111111@gmail.com" name="김*별" nickname="김*별" password="4444" profile_img="https://d3cr9r836ml7sc.cloudfront.net/profileImages/6/4444" is_enable="true" alarm_agreement="true" />
+    <member id="5" email="tjsw111111@naver.com" name="황*정" nickname="황*정" password="5555" is_enable="true" alarm_agreement="true" />
+    <member id="6" email="y0n1111@naver.com" name="요*요" nickname="요*요" password="6666" profile_img="https://d3cr9r836ml7sc.cloudfront.net/profileImages/8/5555" is_enable="true" alarm_agreement="true" />
+    <member id="7" email="0211111@naver.com" name="Ki***ys" nickname="Ki***ys" password="7777" is_enable="true" alarm_agreement="true" />
+    <member id="8" email="yuch11111@gmail.com" name="유*" nickname="유*" password="8888" is_enable="true" alarm_agreement="true" />
+    <member id="9" email="ro111@naver.com" name="토*" nickname="토*" password="9999" is_enable="true" alarm_agreement="true" />
+    <member id="10" email="bigsu11111@hanmail.net" name="임*원" nickname="임*원" password="11110" profile_img="https://d3cr9r836ml7sc.cloudfront.net/profileImages/12/6666" is_enable="true" alarm_agreement="true" />
+    <member id="11" email="qu111119@naver.com" name="변*미" nickname="변*미" password="11111" is_enable="true" alarm_agreement="true" />
+    <member id="12" email="kal11111y@naver.com" name="박*휘" nickname="박*휘" password="11112" is_enable="true" alarm_agreement="true" />
+    <member id="13" email="hav11111@naver.com" name="석*명" nickname="해*" password="11113" profile_img="https://d3cr9r836ml7sc.cloudfront.net/profileImages/15/55555" is_enable="true" alarm_agreement="true" />
+    <member id="14" email="test@email.com" name="테스트" nickname="닉테스트" password="1234" profile_img="img-path" is_enable="true" alarm_agreement="true" />
+</dataset>

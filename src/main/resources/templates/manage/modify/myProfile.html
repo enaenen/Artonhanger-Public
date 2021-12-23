@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="manage/fragments/headerImport :: headerImport"/>
+<meta name="_csrf" th:content="${_csrf.token}"/>
+<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+<body>
+<!-- WRAPPER -->
+<div id="wrapper">
+    <!-- NAVBAR -->
+    <div th:replace="manage/fragments/navHeader :: navHeader"/>
+    <!-- LEFT SIDEBAR -->
+    <div th:replace="manage/fragments/sidebar :: sidebar"></div>
+    <!-- END LEFT SIDEBAR -->
+    <!-- MAIN -->
+    <div class="main">
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <div class="container-fluid">
+                <!-- OVERVIEW -->
+                <div class="panel panel-headline">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">프로필 수정</h3>
+                        <p class="panel-subtitle" th:text="${member.nickname}"></p>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6 offset-md-3 mt-5">
+                                <form accept-charset="UTF-8" th:action="@{/modify/profile}" method="POST" enctype="multipart/form-data" class="modify-form" id="modify-form">
+                                    <input type="hidden" th:value="${member.getEmail()}" name="email">
+                                    <div class="form-group">
+                                        <label for="nickname">작가명</label>
+                                        <input type="text" name="nickname" class="form-control" id="nickname"
+                                               th:placeholder="${member.nickname}"
+                                        th:value="${member.nickname}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="name">이름</label>
+                                        <input type="text"  name="name" class="form-control"
+                                               id="name"
+                                               th:placeholder="${member.getName()}"
+                                        th:value="${member.getName()}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="introduction">작가 소개</label>
+                                        <textarea rows="4" name="introduction" class="form-control"
+                                               id="introduction"
+                                                  th:placeholder="${member.artist.introduction}"
+                                        th:text="${member.artist.introduction}"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="bankName">은행명</label>
+                                        <input type="text" name="bankName" class="form-control" id="bankName"
+                                               th:placeholder="${member.artist.bankAccount.bankName}"
+                                               th:value="${member.artist.bankAccount.bankName}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="account">계좌번호</label>
+                                        <input type="text" name="account" class="form-control" id="account"
+                                               th:placeholder="${member.artist.bankAccount.account}"
+                                               th:value="${member.artist.bankAccount.account}">
+                                    </div>
+                                    <hr>
+                                    <!--             사진 업로드                       -->
+                                    <div class="row">
+                                            <div class="form-group input-group">
+                                                <img class="preview" th:src="${member.getProfileImg()}" alt=" " width="150" height="150"/>
+                                                <hr>
+                                                <input type="file" name="profileImg" onchange="readURL(this);" class="imageUpload"/>
+                                            </div>
+                                    </div>
+                                    <hr>
+                                    <input type="button" name="submitBtn" id="submitBtn" onclick="handleSubmit()" class="btn btn-primary" value="수정" />
+                                </form>
+                                <!--    <div th:replace="fragments/footer :: footer"/>-->
+                            </div>
+                            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
+                            <!--                            <script src="/assets/selectTemplate/js/bootstrap-select.js"></script>-->
+                            <!--                            <link href="/assets/selectTemplate/css/bootstrap-select.css" rel="stylesheet" type="text/css"/>-->
+                        </div>
+                    </div>
+                </div>
+                <!-- END OVERVIEW -->
+                <div class="row">
+                </div>
+                <!-- END RECENT PURCHASES -->
+            </div>
+            <div class="col-md-6">
+                <!-- MULTI CHARTS -->
+                <!-- END MULTI CHARTS -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+            </div>
+            <div class="col-md-5">
+                <!-- TIMELINE -->
+                <div class="panel-body">
+                </div>
+            </div>
+            <!-- END TIMELINE -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+            <!-- VISIT CHART -->
+            <div class="panel">
+                <div class="panel-heading">
+                </div>
+            </div>
+            <!-- END VISIT CHART -->
+        </div>
+        <div class="col-md-4">
+            <!-- REALTIME CHART -->
+        </div>
+        <!-- END REALTIME CHART -->
+    </div>
+</div>
+</div>
+</div>
+<!-- END MAIN CONTENT -->
+</div>
+<!-- END MAIN -->
+<div class="clearfix"></div>
+<footer>
+    <div class="container-fluid">
+        <p class="copyright">&copy; 2017 <a href="https://www.themeineed.com" target="_blank">Theme I Need</a>. All
+            Rights Reserved.</p>
+    </div>
+</footer>
+</div>
+<!-- END WRAPPER -->
+<!-- Javascript -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/assets/scripts/imageUpload.js"></script>
+<script src="/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/assets/scripts/klorofil-common.js"></script>
+<script src="/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<link rel="stylesheet" href="//rawgit.com/Soldier-B/jquery.toast/master/jquery.toast/jquery.toast.min.css" />
+<script src="//rawgit.com/Soldier-B/jquery.toast/master/jquery.toast/jquery.toast.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $.toast.config.align = 'center';
+        $.toast.config.width = 400;
+    });
+    function dataSend(){
+        console.log("ishere")
+        var formData = new FormData($("#modify-form")[0])
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+        $.ajax({
+            async: false,
+            url: "/modify/profile",
+            enctype: 'multipart/form-data',
+            contentType : false,
+            processData : false,
+            data: formData,
+            // dataType: 'json',
+            type: "POST",
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader(header, token);
+            },
+            success: function (data) {
+                toastInfo("정보가 변경되었습니다.")
+                console.log(data);
+                setTimeout(function(){
+                    location.href = "/modify/profile";
+                },1000);
+            },
+            error: function (data) {
+                $('#submitBtn').attr('type','button');
+                var code = data.responseJSON.errCode;
+                var message = data.responseJSON.message;
+                var status = data.status;
+
+                if(code === "MBS_006"){
+                    toastError('중복된 닉네임(작가명) 입니다.');
+                    return;
+                }
+                else if(code === "ETC_000")
+                    toastError('서버 에러입니다 잠시 후 다시 시도해주세요.');
+            }
+        });
+    }
+    function handleSubmit(){
+        $('#submitBtn').attr('type','hidden');
+            dataSend();
+            return;
+    }
+
+    function toastInfo (text) {
+            $.toast('<h2>'+text+'</h2>', {
+                duration: 1000,
+                type: 'info'
+            });
+            return;
+    };
+    function toastError (text) {
+        $.toast('<h2>'+text+'</h2>', {
+            duration: 2000,
+            type: 'danger'
+        });
+        return;
+    };
+</script>
+
+</body>
+
+</html>

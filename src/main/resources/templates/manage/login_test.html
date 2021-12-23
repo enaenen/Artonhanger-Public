@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta name="_csrf" th:content="${_csrf.token}">
+    <meta name="_csrf_header" th:content="${_csrf.headerName}">
+
+    <meta charset="UTF-8">
+    <title>AOH</title>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="/assets/css/login.css">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="/assets/img/logo.png" id="icon" alt="User Icon"/>
+        </div>
+
+        <!-- Login Form -->
+        <form action="/login" method="POST">
+            <input type="checkbox" class="fadeIn first"
+                   name="remember-me" value="true"
+                   id="remember-me"
+                   checked>
+            <label class="custom-control-label" for="remember-me">자동 로그인</label>
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <input type="text" id="username" class="fadeIn second" name="username" placeholder="email">
+            <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
+            <!--            카카오로그인 완성 후 추가 예정 -->
+            <!--            <a id="kakao-login-btn" class="fadeIn forth" name="kakao" th:placeholder="kakao">-->
+            <!--                <img-->
+            <!--                        src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"-->
+            <!--                        width="222"-->
+            <!--                />-->
+            <!--            </a>-->
+
+            <!--            <div class="custom-control custom-checkbox mb-1">-->
+            <!--            </div>-->
+            <input type="submit" id="login" class="fadeIn fifth" value="Log In">
+        </form>
+        <input type="button" id="logintest" class="fadeIn fifth" value="Log InT" onclick="loginRequest()">
+        <div id="formFooter">
+            <a class="underlineHover" href="/register">작가 회원가입</a>
+        </div>
+        <!-- Remind Passowrd -->
+        <div id="forgotPw">
+            <a class="underlineHover" href="/forgot">비밀번호를 잊어버렸습니다.</a>
+        </div>
+
+    </div>
+</div>
+<script>
+    // var data=$("#input").val();
+    //
+    // var messageDTO={
+    //     result:data
+    // };
+    //
+    // $.ajax({
+    //     url: "/dataSend",
+    //     data: messageDTO,
+    //     type:"POST",
+    // }).done(function (fragment) {
+    //     $("#resultDiv").replaceWith(fragment);
+    // });
+    function loginRequest() {
+        var email = $("#username").val();
+        var pw = $("#password").val();
+        console.log(email);
+        console.log(pw);
+
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+        // $(document).ajaxSend(function (e, xhr, options) {
+        //     xhr.setRequestHeader(header, token);
+        // });
+        $.ajax({
+            beforeSend: function(xhr){
+                xhr.setRequestHeader(header,token);
+            },
+            url: "http://localhost:8889/login",
+            data:
+                {
+                    username : email,
+                    password : pw
+                },
+            type:"POST",
+            success:function (result) {
+                alert(result);
+                console.log(result)
+            },
+            error:function (e) {
+                console.log(e)
+            }
+        });
+    }
+</script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script>
+    Kakao.init('8a8df9312079e37ceb4bc00f55a493a5');
+    console.log(Kakao.isInitialized());
+
+
+    // function loginWithKakao() {
+    //     Kakao.Auth.login({
+    //         success: function(authObj) {
+    //             alert(JSON.stringify(authObj))
+    //         },
+    //         fail: function(err) {
+    //             alert(JSON.stringify(err))
+    //         },
+    //     })
+    // }
+
+    Kakao.Auth.createLoginButton({
+        container: '#kakao-login-btn',
+        success: function (authObj) {
+            Kakao.API.request({
+                url: '/v2/user/me',
+                success: function (res) {
+                    console.log(JSON.stringify(res))
+                    loginRequest(JSON.stringify(res))
+                    // alert(JSON.stringify(res))
+                },
+                fail: function (error) {
+                    alert(
+                        'login success, but failed to request user information: ' +
+                        JSON.stringify(error)
+                    )
+                },
+            })
+        },
+        fail: function (err) {
+            alert('failed to login: ' + JSON.stringify(err))
+        },
+    })
+
+    // function loginRequest(data) {
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "http://39.118.68.223:8080/slogin",
+    //         data: data
+    //     })
+    // }
+
+</script>
+</body>
+</html>

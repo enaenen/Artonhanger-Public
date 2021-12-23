@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <meta name="_csrf" th:content="${_csrf.token}"/>
+     <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <title>회원가입</title>
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="/assets/register/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="/assets/register/vendor/nouislider/nouislider.min.css">
+    <!-- Main css -->
+    <link rel="stylesheet" href="/assets/register/css/style.css">
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <div class="main">
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-form">
+                    <form accept-charset="UTF-8" th:action="@{/templates/manage/register/register}" method="POST" enctype="multipart/form-data" class="register-form" id="register-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <div class="form-input">
+                                    <label for="email" class="required" >Email</label>
+                                    <input type="text" name="email" id="email" placeholder="ex:)artist@artonhanger.com"/>
+                                </div>
+                                <div class="form-input">
+                                    <label for="nickname" class="required">닉네임(작가 활동명)</label>
+                                    <input type="text" name="nickname" id="nickname" />
+                                </div>
+                                <div class="form-input">
+                                    <label for="name" class="required">이름</label>
+                                    <input type="text" name="name" id="name" />
+                                </div>
+                                <div class="form-input">
+                                    <label for="password" class="required">비밀번호</label>
+                                    <input type="password" name="password" id="password" placeholder="영문+숫자 조합 8~20자리"/>
+                                </div>
+                                <div class="form-input">
+                                    <label for="passwordConfirm" class="required">비밀번호 확인</label>
+                                    <input type="password" name="passwordConfirm" id="passwordConfirm" placeholder="영문+숫자 조합 8~20자리"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <div class="form-input">
+                                    <label for="banks2" class="required" >은행이름</label>
+                                    <input type="text" name="banks" id="banks2" placeholder="예 : 카카오뱅크" />
+                                </div>
+
+                                <div class="form-input">
+                                    <label for="bankAccount" class="required">계좌번호<br>(작품판매로 인한 수익 발생시 이 계좌로 입금됩니다.)</label>
+                                    <input type="text" name="bankAccount" id="bankAccount" placeholder="수익 발생시 입금될 계좌입니다."/>
+                                </div>
+                                <div class="form-input">
+                                    <label for="phoneNumber" class="required">휴대폰 번호</label>
+                                    <input type="text" name="phoneNumber" id="phoneNumber" placeholder="-를 제외한 휴대폰번호"/>
+                                </div>
+                                <div class="form-input">
+                                    <div class="ml-2 col-sm-6">
+                                        <img class="preview" src="/assets/img/preview-icon.png" alt="your image" />
+                                        <input type="file" name="profileImage" id="profileImage" class="form-control-file" onchange="readURL(this);" />
+                                    </div>
+                                </div>
+                                <div class="form-input">
+                                    <label for="introduction">작가 소개</label>
+                                    <textarea class="form-control" id="introduction" rows="3" name="introduction" placeholder="작가님의 소개를 입력해주세요."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-submit">
+                            <input type="button" onclick="handleSubmit()" value="확인" class="submit" id="submit" name="submit" />
+                            <input type="submit" value="뒤로가기" class="submit" id="reset" name="reset" onclick="history.back()"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- JS -->
+    <script src="/assets/register/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/register/vendor/nouislider/nouislider.min.js"></script>
+    <script src="/assets/register/vendor/wnumb/wNumb.js"></script>
+    <script src="/assets/register/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="/assets/register/vendor/jquery-validation/dist/additional-methods.min.js"></script>
+    <script src="/assets/register/js/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/assets/scripts/imageUpload.js"></script>
+    <link rel="stylesheet" href="//rawgit.com/Soldier-B/jquery.toast/master/jquery.toast/jquery.toast.min.css" />
+    <script src="//rawgit.com/Soldier-B/jquery.toast/master/jquery.toast/jquery.toast.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.toast.config.align = 'right';
+            $.toast.config.width = 400;
+        });
+        function dataSend(){
+            var formData = new FormData($("#register-form")[0])
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+            $.ajax({
+                async: false,
+                url: "/register",
+                enctype: 'multipart/form-data',
+                contentType : false,
+                processData : false,
+                data: formData,
+                // dataType: 'json',
+                type: "POST",
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader(header, token);
+                },
+                success: function (data) {
+                    console.log(data);
+                    location.href = "/login";
+                },
+                error: function (data) {
+                    var code = data.responseJSON.errCode;
+                    var message = data.responseJSON.message;
+                    var status = data.status;
+
+                    if(code === "MBS_006"){
+                        toastError('이미 가입된 이메일입니다.');
+                        return;
+                    }
+                    else if(code === "MBS_001"){
+                        toastError('중복된 닉네임(작가명) 입니다.');
+                        $('#nickname').val('');
+                        return;
+                    }
+                    else if(code === "ETC_000")
+                        toastError('서버 에러입니다 잠시 후 다시 시도해주세요.');
+                }
+            });
+        }
+        function handleSubmit(){
+            if (
+                !verifyEmptyValue($('#email').val(), '이메일을 입력해주세요.') ||
+                !verifyEmptyValue($('#nickname').val(), '닉네임(작가명)을 입력해주세요.') ||
+                !verifyEmptyValue($('#name').val(), '성함을 입력해주세요.') ||
+                !verifyEmptyValue($('#password').val(), '비밀번호를 입력해주세요.') ||
+                !verifyEmptyValue($('#passwordConfirm').val(), '비밀번호확인을 입력해주세요.') ||
+                !verifyEmptyValue($('#banks2').val(), '은행이름을 입력해주세요.') ||
+                !verifyEmptyValue($('#bankAccount').val(), '계쫘번호를 입력해주세요.') ||
+                !verifyEmptyValue($('#phoneNumber').val(), '휴대폰 번호를 입력해주세요.')
+            ) {
+                return;
+            }
+            else if (!verifyPassword() || !verifyPhonenumber())
+                return;
+            else
+            {
+                dataSend();
+                return;
+            }
+        }
+
+        function verifyEmptyValue (value, text) {
+            if (value === '' || value === null) {
+                $.toast('<h2>'+text+'</h2>', {
+                    duration: 2000,
+                    type: 'danger'
+                });
+                return false;
+            }
+            return true;
+        };
+
+        function verifyPassword(){
+            var passwd = $('#password').val();
+            var confirmPasswd = $('#passwordConfirm').val();
+            if (passwd === confirmPasswd && passwd === '') {
+                toastError('');
+                return false;
+            }
+            if (!/^[a-zA-Z0-9]{8,20}$/.test(passwd)) {
+                toastError('비밀번호는 영문 숫자 조합 8~20자리입니다.');
+                return false;
+            }
+            var checkNum = passwd.search(/[0-9]/g);
+            var checkEng = passwd.search(/[a-z]/gi);
+            if (checkNum < 0 || checkEng < 0) {
+                toastError('비밀번호는 영문 숫자 조합 8~20자리입니다.');
+                return false;
+            }
+            if (passwd !== confirmPasswd) {
+                toastError('비밀번호가 일치하지 않습니다.');
+                return false;
+            }
+            return true;
+        };
+        function verifyPhonenumber(){
+            if (!/^\d{3}\d{3,4}\d{4}$/.test($('#phoneNumber').val())) {
+                toastError('⛔ 휴대폰 번호를 확인해주세요.');
+                return false;
+            }
+            return true;
+        }
+        function toastError (errorMessage) {
+                $.toast('<h3>'+errorMessage+'</h3>', {
+                    duration: 2000,
+                    type: 'danger'
+                });
+                return;
+        };
+    </script>
+</body>
+</html>

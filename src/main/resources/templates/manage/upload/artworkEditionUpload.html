@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="manage/fragments/headerImport :: headerImport"/>
+<meta name="_csrf" th:content="${_csrf.token}"/>
+<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+<body>
+<style>
+    .preview {
+        max-width: 100px;
+        height: 100px;
+        margin-top: 20px;
+    }
+</style>
+<div id="wrapper">
+    <div th:replace="manage/fragments/navHeader :: navHeader"/>
+    <div th:replace="manage/fragments/sidebar :: sidebar"/>
+    <div class="main">
+        <div class="main-content">
+            <div class="container-fluid">
+                <div class="panel panel-headline">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">에디션 작품 업로드</h3>
+                        <p class="panel-subtitle">프린팅 작품 업로드</p>
+                    </div>
+                    <!--HEADLINE END-->
+                    <div class="panel-body">
+                        <!--BODY START-->
+
+                        <form accept-charset="UTF-8" th:action="@{/upload/artwork}" method="POST"
+                              enctype="multipart/form-data" class="upload-form" id="upload-form">
+                            <div class="row">
+                                <div class="form-group col-md-5">
+                                    <label for="title">작품명</label>
+                                    <input type="text" name="title" class="form-control" id="title"
+                                           placeholder="작품명" required="required">
+                                </div>
+                                <!--          년              -->
+                                <div class="form-group col-md-3">
+                                    <label for="productionYear">년도</label>
+                                    <input type="number" step="any" name="productionYear" class="form-control"
+                                           id="productionYear"
+                                           placeholder="작품 제작년도" required="required">
+                                </div>
+                            </div>
+                            <hr>
+                            <!--          작품 사이즈              -->
+                            <div class="row">
+                                <div class="form-group col-md-5">
+                                    <label for="height">높이(cm)</label>
+                                    <input type="number" step="any" name="height" class="form-control"
+                                           id="height" placeholder="높이 (cm)"
+                                           required="required">
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label for="width">넓이(cm)</label>
+                                    <input type="number" step="any" name="width" class="form-control" id="width"
+                                           placeholder="넓이 (cm)"
+                                           required="required">
+                                </div>
+                            </div>
+                            <!--           액자             -->
+                            <label for="photoFrame">액자</label>
+                            <div class="form-group">
+                                <select class="selectpicker" id="photoFrame" name="photoFrame" title="액자포함여부">
+                                    <option th:value="0">미포함</option>
+                                    <option th:value="1">액자 포함</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-group" id="photoFrameInfo" name="photoFrameInto">
+                                </div>
+                            </div>
+                            <hr>
+                            <!--       카테고리     -->
+                            <label for="categories">카테고리</label>
+
+                            <div class="form-group">
+                                <select class="selectpicker" multiple data-max-options="2" id="categories"
+                                        name="categories" required="required">
+                                    <option value="LANDSCAPE">풍경</option>
+                                    <option value="PERSON">인물</option>
+                                    <option value="OBJECT">사물</option>
+                                    <option value="ORGANISM">동식물</option>
+                                    <option value="ABSTRACT">추상</option>
+                                    <option value="GRAPHIC">그래픽</option>
+                                    <option value="CHARACTER">캐릭터</option>
+                                    <option value="SCULPTURE">도예/입체</option>
+                                    <option value="ETC">기타</option>
+                                </select>
+                            </div>
+
+                            <!--       메인컬러     -->
+                            <label for="colors">메인 컬러</label>
+
+                            <div class="form-group">
+                                <select class="selectpicker" multiple data-max-options="2" id="colors"
+                                        name="colors" required="required">
+                                    <option value="RED">빨강</option>
+                                    <option value="ORANGE">주황</option>
+                                    <option value="YELLOW">노랑</option>
+                                    <option value="GREEN">초록</option>
+                                    <option value="BLUE">파랑</option>
+                                    <option value="NAVY">남색</option>
+                                    <option value="PURPLE">보라</option>
+                                    <option value="PINK">핑크</option>
+                                    <option value="GRAY">회색</option>
+                                    <option value="WHITE">흰색</option>
+                                    <option value="BLACK">검정</option>
+                                    <option value="PASTEL">파스텔</option>
+                                    <option value="FLUORESCENT">형광</option>
+                                    <option value="ETC">기타</option>
+                                </select>
+                            </div>
+                            <!--       재료     -->
+                            <div class="form-group" style="display:none">
+                                <select class="selectpicker" multiple data-max-options="2" id="materials"
+                                        name="materials">
+                                    <option value="PRINTING" selected>프린팅</option>
+                                </select>
+                            </div>
+
+                            <!--       가격 / 배송비     -->
+                            <div class="row">
+                                <div class="form-group col-md-5">
+                                    <label for="price">가격 (숫자만 입력)</label>
+                                    <input type="number" name="price" class="form-control" id="price"
+                                           placeholder="가격(숫자만 입력)" required="required">
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label for="deliveryPrice">배송비 선택</label>
+                                    <select class="form-control" id="deliveryPrice" name="deliveryPrice"
+                                            required="required">
+                                        <option value="3000">3000원</option>
+                                        <option value="5000">5000원</option>
+                                        <option value="7000">7000원</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="stockAmount">수량</label>
+                                <input type="number" name="stockAmount" class="form-control" id="stockAmount"
+                                       placeholder="판매가능 수량" required="required">
+                            </div>
+                            <!--             사진 업로드                       -->
+                            <div class="row">
+                                <div class="form-group multiple-form-group">
+                                    <div class="form-group input-group">
+                                        <img class="preview" src="/assets/img/preview-icon.png" alt="your image"
+                                             height="300" width="300"/>
+                                        <input type="file" name="artworkImages[]"
+                                               accept="image/jpeg, image/png, image/bmp" onchange="readURL(this);"
+                                               class="imageUpload"/>
+                                        <textarea name="descriptions[]" class="form-control" rows="3"
+                                                  placeholder="작품 사진에 대한 설명을 적어주세요."></textarea>
+                                        <span class="input-group-btn">
+                                                      <button type="button" class="btn btn-default btn-add">+</button>
+                                                </span>
+                                        <textarea name="descriptions[]" class="default-ta" rows="3"
+                                                  hidden="true"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="button" onclick="handleUpload()" value="업로드" class="btn btn-primary"
+                                   name="submit" id="submitBtn"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- END MAIN CONTENT -->
+    </div>
+    <!--  END MAIN -->
+</div>
+<!--END WRAPPER-->
+<script src="/assets/scripts/imageUpload.js"></script>
+<script src="/assets/js/jquery-3.5.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
+</body>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+<script src="/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--<script src="/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>-->
+<!--<script src="/assets/scripts/klorofil-common.js"></script>-->
+<script src="/assets/scripts/frameSelection.js"></script>
+<link rel="stylesheet" href="//rawgit.com/Soldier-B/jquery.toast/master/jquery.toast/jquery.toast.min.css"/>
+<script src="//rawgit.com/Soldier-B/jquery.toast/master/jquery.toast/jquery.toast.min.js"></script>
+<script type="text/javascript">
+    function verifySize(value) {
+        if (value <= 0)
+            return false;
+        return true;
+    }
+
+    function verifyEmptyValue(value, text) {
+        if (value === '' || value === null) {
+            $.toast('<h2>' + text + '</h2>', {
+                duration: 2000,
+                type: 'danger'
+            });
+            return false;
+        }
+        return true;
+    };
+
+    function handleUpload() {
+        var isFramed = $('#photoFrame option:selected').val();
+        $('#submitBtn').hide();
+        if (
+            !verifyEmptyValue($('#title').val(), '작품명을 입력해주세요.') ||
+            !verifyEmptyValue($('#productionYear').val(), '작품 제작년도를 입력해주세요.') ||
+            !verifyEmptyValue($('#width').val(), '작품 넓이를 입력해주세요.') ||
+            !verifyEmptyValue($('#height').val(), '작품 높이를 입력해주세요.') ||
+            !verifyEmptyValue($('#photoFrame').val(), '액자 포함여부를 선택해주세요') ||
+            !verifyEmptyValue($('#categories').val(), '카테고리를 선택해주세요.') ||
+            !verifyEmptyValue($('#materials').val(), '재료를 선택해주세요.') ||
+            !verifyEmptyValue($('#colors').val(), '주 색상을 선택해주세요.') ||
+            !verifyEmptyValue($('#price').val(), '가격을 입력해주세요.') ||
+            !verifyEmptyValue($('#deliveryPrice').val(), '배송비를 입력해주세요.') ||
+            !verifyEmptyValue($('.imageUpload').val(), '작품사진을 최소 1개이상 업로드해주세요!') ||
+            !verifyEmptyValue($('#stockAmount').val(), '재고수량은 최소 1개이상 으로 입력해주세요!')
+        ) {
+            $('#submitBtn').show();
+            return;
+        }
+        if (isFramed === "1") {
+            if (!verifyEmptyValue($('.frameHeight'), '액자 높이를 입력해주세요.') ||
+                !verifyEmptyValue($('.frameWidth'), '액자 넓이를 입력해주세요.') ||
+                !verifyEmptyValue($('.photoFrameMaterial'), '액자 재질을 입력해주세요.')
+            ) {
+                $('#submitBtn').show();
+                return;
+            }
+        }
+        if (!verifySize($('#price').val())) {
+            toastError('가격을 확인해주세요.');
+            $('#submitBtn').show();
+            return;
+        }
+        if (!verifySize($('#width').val()) || !verifySize($('#height').val())) {
+            toastError('작품 사이즈를 확인해주세요.');
+            $('#submitBtn').show();
+            return;
+        }
+        dataSend();
+        return;
+    }
+
+    $(document).ready(function () {
+        $.toast.config.align = 'center';
+        $.toast.config.width = 400;
+    });
+
+    function dataSend() {
+        var formData = new FormData($("#upload-form")[0])
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+        $.ajax({
+            async: false,
+            url: "/upload/artwork",
+            enctype: 'multipart/form-data',
+            contentType: false,
+            processData: false,
+            data: formData,
+            // dataType: 'json',
+            type: "POST",
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader(header, token);
+            },
+            success: function (data) {
+                toastInfo("작품이 업로드되었습니다.")
+                console.log(data);
+                setTimeout(function () {
+                    location.href = "/upload/edition";
+                }, 2000);
+            },
+            error: function (data) {
+                var code = data.responseJSON.errCode;
+                var message = data.responseJSON.message;
+                var status = data.status;
+                $('#submitBtn').show();
+                if (code === "FUL_001")
+                    toastError('사진파일 크기는 10MB 미만으로 업로드해주세요!');
+                else if (code === "FUL_000")
+                    toastError('허용된 파일 개수를 초과 하였습니다.');
+                else if (code === "FUL_002")
+                    toastError('허용된 파일 총 용량을 초과하였습니다. ');
+                else if (code === "FUL_003")
+                    toastError('업로드된 사진이 없습니다.');
+                else if (code === "ETC_000")
+                    toastError('서버 에러입니다 잠시 후 다시 시도해주세요.');
+            }
+        });
+    }
+
+    function toastInfo(text) {
+        $.toast('<h2>' + text + '</h2>', {
+            duration: 1000,
+            type: 'info'
+        });
+        return;
+    };
+
+    function toastError(errorMessage) {
+        $.toast('<h3>' + errorMessage + '</h3>', {
+            duration: 2000,
+            type: 'danger'
+        });
+        return;
+    };
+</script>
+</html>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <category id="1" artwork_id="1" category_enum="OBJECT" />
+    <category id="2" artwork_id="2" category_enum="LANDSCAPE" />
+    <category id="3" artwork_id="3" category_enum="LANDSCAPE" />
+    <category id="4" artwork_id="4" category_enum="LANDSCAPE" />
+    <category id="5" artwork_id="5" category_enum="ORGANISM" />
+    <category id="6" artwork_id="6" category_enum="OBJECT" />
+    <category id="7" artwork_id="7" category_enum="ORGANISM" />
+    <category id="8" artwork_id="8" category_enum="ORGANISM" />
+    <category id="9" artwork_id="9" category_enum="ORGANISM" />
+    <category id="10" artwork_id="10" category_enum="ORGANISM" />
+    <category id="11" artwork_id="1" category_enum="LANDSCAPE" />
+</dataset>

@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {dep-name}
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {app-name}
+  template:
+    metadata:
+      labels:
+        app: {app-temp-name}
+    spec:
+      containers:
+        - name: {aoh-backend}
+          image: <IMAGE>
+          startupProbe:
+            httpGet:
+              path: {hc-path}
+              port: {hc-path-port}
+            periodSeconds: 5
+            failureThreshold: 30
+          livenessProbe:
+            httpGet:
+              path: {hc-path-2}
+              port: {hc-path-2-port}
+            periodSeconds: 10
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: {hr-path}
+              port: {hr-path-port}
+            periodSeconds: 10
+            failureThreshold: 3
+          resources:
+            requests:
+              memory: "400Mi"
+              cpu: "400m"
+            limits:
+              memory: "400Mi"
+              cpu: "400m"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "prod"
+            - name: AWS_ACCESS_KEY_ID
+              value: "$AWS_ACCESS_KEY_ID"
+            - name: AWS_SECRET_ACCESS_KEY
+              value: "$AWS_SECRET_ACCESS_KEY"
+            - name: AWS_ACCESS_KEY
+              value: "$AWS_ACCESS_KEY_ID"
+            - name: AWS_SECRET_KEY
+              value: "$AWS_SECRET_ACCESS_KEY"
+#            - name: SPRING_DATASOURCE_DRIVER_CLASS_NAME
+#              value: "$PROD_DB_DRIVER"
+#            - name: SPRING_DATASOURCE_URL
+#              value: "$PROD_DB_URL"
+#            - name: SPRING_DATASOURCE_USERNAME
+#              value: "$PROD_DB_USERNAME"
+#            - name: SPRING_DATASOURCE_PASSWORD
+#              value: "$PROD_DB_PASSWORD"

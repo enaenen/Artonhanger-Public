@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img{
+            max-width:100px;
+            height:100px;
+            margin-top:20px;
+        }
+        input{
+            margin-top:20px;
+        }
+    </style>
+</head>
+<body>
+uploadPage
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+            <form accept-charset="UTF-8" th:action="@{/test/submit}" method="POST">
+                <div class="form-group multiple-form-group">
+                    <div class="form-group input-group">
+                        <img class="preview" src="/assets/img/preview-icon.png" alt="your image" />
+                        <input type="file" name="artworkImage[]" onchange="readURL(this);" class="imageUpload"/>
+                        <textarea name="descriptions[]" class="form-control" rows="3"></textarea>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default btn-add">+</button>
+                        </span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">업로드</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/assets/scripts/imageUpload.js"></script>
+</script>
+</body>
+</html>

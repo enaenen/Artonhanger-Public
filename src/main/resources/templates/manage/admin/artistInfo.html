@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="manage/fragments/headerImport :: headerImport"/>
+<body>
+<div id="wrapper">
+    <div th:replace="manage/fragments/sidebar :: sidebar"/>
+    <div class="header">
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="brand">
+                <a th:href="@{/}">
+                    <img src="/assets/img/logo-word.png" width="150" alt="ArtonHanger Logo" class="img-responsive logo">
+                </a>
+            </div>
+            <div class="container-fluid">
+                <div class="navbar-btn">
+                    <button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
+                </div>
+
+                <!--                검색창-->
+                <form class="navbar-form navbar-left" th:action="@{/admin/artists/search}" name="searchForm" id="searchForm">
+                    <div class="input-group">
+                        <input type="text" id="keyword" name="keyword" value="" class="form-control" placeholder="검색">
+                        <span class="input-group-btn"><button type="submit" class="btn btn-primary">검색</button></span>
+                    </div>
+                </form>
+
+                <div id="navbar-menu">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span th:if ="${member != null}" th:text="${member.nickname}"></span>
+                                <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a th:href="@{/modify/profile}"><i class="lnr lnr-user"></i> <span>내 프로필</span></a></li>
+                                <!--                                <li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>-->
+                                <!--                                <li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>-->
+                                <li>
+                                    <form th:action="@{/logout}" method="POST" name="logout" id="logout"></form>
+                                    <a href="javascript:document.getElementById('logout').submit()"><i class="lnr lnr-exit"></i> <span>로그아웃</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="main">
+        <div class="main-content">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="container-fluid">
+                        <div class="panel-title">
+                            작가 정보
+                        </div>
+                        필요한 정보가 있으면 알려주세요.<br>
+                        아예 입력이 안되어있으면 목록에 표시되지 않습니다.<br>
+                    </div>
+                </div>
+                <hr>
+                    <div class="panel-body" id="searchResult">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>이름</th>
+                                <th>은행명</th>
+                                <th>계좌 번호</th>
+                                <th>휴대폰</th>
+                                <th>이메일</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="artist : ${artistList}">
+                                <td th:text="${artist.member.name}"></td>
+                                <td th:text="${artist.bankAccount.bankName}"></td>
+                                <td th:text="${artist.bankAccount.account}"></td>
+                                <td th:text="${artist.phoneNumber}"></td>
+                                <td th:text="${artist.member.email}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<script src="/assets/scripts/klorofil-common.js"></script>
+</body>
+</html>

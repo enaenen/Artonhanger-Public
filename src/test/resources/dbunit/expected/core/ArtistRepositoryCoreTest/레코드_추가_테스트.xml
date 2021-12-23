@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <artist id="1" member_id="1" account="411-9111111-11117" bank_name="하나은행 " introduction="오일파스텔로 그림을 그리고있는, 작가입니다." phone_number="010-1111-1111" account_holder="오*진" is_enable="true" />
+    <artist id="2" member_id="2" account="1001111111313 " bank_name="우리은행 " introduction="따스하게 스며드는 작품들로 사람들의 마음에 잔잔한 온기를 채우고 싶어요:)" phone_number="010-5134-1111" account_holder="김*원" is_enable="true" />
+    <artist id="3" member_id="3" account="361111-04-111134" bank_name="국민은행" introduction="나 자신을 이해하는 것에서 시작한 작업은 궁극적으로 작품을 바라보는 이들에게 서로 소통하며 공감함으로써, 타인을 이해하는 통로가 되는 매개체가 될 수 있다고 믿습니다." phone_number="010-7250-1111" account_holder="박*현" is_enable="true" />
+    <artist id="4" member_id="4" account="511111-01-111111" bank_name="국민은행 " introduction="드로잉의 과정이 나의 삶의 모습, 내가 형성되는 과정과 닮았다고 생각합니다." phone_number="010-9447-1111" account_holder="김*별" is_enable="true" />
+    <artist id="5" member_id="5" account="3523111152043" bank_name="농협은행 " introduction="일상을 깨어나 몽글거리는 동화 속으로" phone_number="010-3065-1111" account_holder="황*정" is_enable="true" />
+    <artist id="6" member_id="6" account="01011113401" bank_name="기업은행 " introduction="물감이 좋은 작가입니다. 저는 물감의 본질이 중요하다고 생각해서 입체감과 질감을 극대화해서 표현합니다. 저에게 물감은 각각 고유한 색을 가진 한 사람 같아요." phone_number="010-2355-1111" account_holder="요*요" is_enable="true" />
+    <artist id="7" member_id="7" account="356-1111-1111-53" bank_name="농협은행 " introduction="자화상으로 소통하는 작가입니다. 단순한 제 감정을 넘어서 다른 사람들도 공감할 수 있는 메시지를 담으려고 노력합니다." phone_number="010-7124-1111" account_holder="김*스" is_enable="true" />
+    <artist id="8" member_id="8" account="25111111537007" bank_name="하나은행 " introduction="일상과 판타지를 연결하고 싶은 작가입니다" phone_number="010-5665-1111" account_holder="유*" is_enable="true" />
+    <artist id="9" member_id="9" account="302-1111-1111-81" bank_name="농협은행 " introduction="책, 음악, 일상 그리고 여러분의 이야기에서 영감을 받아 크레파스 드로잉을 합니다. 작지만 알찬 사랑과 위로를 전합니다." phone_number="010-5539-1111" account_holder="토*" is_enable="true" />
+    <artist id="10" member_id="10" account="111151-51-011160" bank_name="농협은행" introduction="주로 모란을 그립니다." phone_number="010-6337-1111" account_holder="임*원" is_enable="false" />
+    <artist id="11" member_id="11" account="123123123" bank_name="국민은행 " introduction="테스트소개" phone_number="010-1234-1234" account_holder="내이름" is_enable="true" />
+</dataset>

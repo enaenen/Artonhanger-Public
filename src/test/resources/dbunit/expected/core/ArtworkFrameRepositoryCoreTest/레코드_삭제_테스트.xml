@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <artwork_frame id="2" material="원목" height="30.0" width="45.0" />
+    <artwork_frame id="3" material="원목" height="30.0" width="45.0" />
+    <artwork_frame id="4" material="무광 알루미늄 프레임 + 국내산 투명 강화 아크릴" height="30.2" width="42.5" />
+    <artwork_frame id="5" material="무광 알루미늄 프레임 + 국내산 투명 강화 아크릴" height="30.2" width="40.5" />
+    <artwork_frame id="6" material="무광 알루미늄 프레임 + 국내산 투명 강화 아크릴" height="30.2" width="42.5" />
+    <artwork_frame id="7" material="무광 알루미늄 프레임 + 국내산 투명 강화 아크릴" height="30.3" width="30.3" />
+    <artwork_frame id="8" material="무광 알루미늄 프레임 + 국내산 투명 강화 아크릴" height="30.3" width="30.3" />
+    <artwork_frame id="9" material="무광 알루미늄 프레임 + 국내산 투명 강화 아크릴" height="30.3" width="30.3" />
+    <artwork_frame id="10" material="무광 알루미늄 프레임 + 국내산 투명 강화 아크릴" height="30.3" width="30.3" />
+</dataset>

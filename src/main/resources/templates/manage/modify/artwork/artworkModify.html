@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="manage/fragments/headerImport :: headerImport"/>
+<meta name="_csrf" th:content="${_csrf.token}"/>
+<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+<body>
+<style>
+    img {
+        max-width: 150px;
+        height: 150px;
+        margin-top: 20px;
+    }
+</style>
+<!-- WRAPPER -->
+<div id="wrapper">
+    <!-- NAVBAR -->
+    <div th:replace="manage/fragments/navHeader :: navHeader"/>
+    <!-- LEFT SIDEBAR -->
+    <div th:replace="manage/fragments/sidebar :: sidebar"></div>
+    <!-- END LEFT SIDEBAR -->
+    <!-- MAIN -->
+    <div class="main">
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <div class="container-fluid">
+                <!-- OVERVIEW -->
+                <div class="panel panel-headline">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">작품 수정</h3>
+                        <p class="panel-subtitle" th:text="${artwork.getTitle()}"></p>
+                    </div>
+                    <hr>
+                    <div class="panel-body">
+                        <div class="col-md-6 offset-md-3 mt-5">
+                            <form accept-charset="UTF-8" th:action="@{/{artworkId}(artworkId=${artwork.getId()})}"
+                                  class="modify-form" id="modify-form"
+                                  method="POST" enctype="multipart/form-data">
+                                <input type="hidden" th:value="${artwork.getImwebId()}" class="imwebId" id="imwebId">
+                                <input type="hidden" th:value="${artwork.getId()}" class="artworkId" id="artworkId">
+                                <div class="row">
+                                    <div class="form-group col-md-5">
+                                        <label for="title">작품명</label>
+                                        <input type="text" name="title" class="form-control" id="title"
+                                               th:placeholder="${artwork.getTitle()}" required="required">
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <label for="productionYear">제작 년도</label>
+                                        <input type="number" step="any" name="productionYear" class="form-control"
+                                               id="productionYear"
+                                               th:placeholder="${artwork.getProductionYear()}" required="required">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-5">
+                                        <label for="height">높이(cm)</label>
+                                        <input type="number" step="any" name="height" class="form-control"
+                                               id="height" th:placeholder="${artwork.getHeight()}"
+                                               th:value="${artwork.height}"
+                                               required="required">
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <label for="width">넓이(cm)</label>
+                                        <input type="number" step="any" name="width" class="form-control" id="width"
+                                               th:value="${artwork.width}"
+                                               th:placeholder="${artwork.getWidth()}">
+                                    </div>
+                                </div>
+                                <label for="photoFrame">액자</label>
+                                <div class="form-group">
+                                    <div th:if="${artwork.isFramed}">
+                                        <select class="selectpicker" id="photoFrame" name="photoFrame" title="액자포함여부">
+                                            <option th:value="1" selected>액자 포함</option>
+                                            <option th:value="0">미포함</option>
+                                        </select>
+                                    </div>
+                                    <div th:unless="${artwork.isFramed()}">
+                                        <select class="selectpicker" id="photoFrame" name="photoFrame"
+                                                title="액자포함여부">
+                                            <option th:value="1">액자 포함</option>
+                                            <option th:value="0" selected>미포함</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-group" id="photoFrameInfo" name="photoFrameInfo">
+                                        <div th:if="${artwork.isFramed()}" id="photoFrameSize" class="form-group">
+                                            <div class="row">
+                                                <div class="form-group col-md-5">
+                                                    <label for="frameHeight">액자포함 높이(cm)</label>
+                                                    <input type="number" step="any" name="frameHeight"
+                                                           class="form-control"
+                                                           id="frameHeight"
+                                                           th:placeholder="${artwork.artworkFrame.size.height}">
+                                                </div>
+                                                <div class="form-group col-md-5">
+                                                    <label for="frameWidth">X 액자포함 넓이(cm)</label>
+                                                    <input type="number" step="any" name="frameWidth"
+                                                           class="form-control"
+                                                           id="frameWidth"
+                                                           th:placeholder="${artwork.artworkFrame.size.width}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for='photoFrameMaterial'>액자재질</label>
+                                                <input type="text" name="photoFrameMaterial" class="form-control"
+                                                       id="photoFrameMaterial"
+                                                       th:placeholder="${artwork.artworkFrame.material}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="price">가격 (숫자만 입력)</label>
+                                    <input type="number" name="price" class="form-control" id="price"
+                                           th:placeholder="${artwork.price}" th:value="${artwork.price}">
+                                </div>
+                                <hr>
+                                <div class="form-group">
+                                    <label for="deliveryPrice">배송비 선택</label>
+                                    <select class="form-control" id="deliveryPrice" name="deliveryPrice">
+                                        <option value="" selected disabled hidden> 변경안함</option>
+                                        <option value="3000">3000원</option>
+                                        <option value="5000">5000원</option>
+                                        <option value="7000">7000원</option>
+                                    </select>
+                                </div>
+                                <div th:if="${artwork.isEdition()}" class="form-group">
+                                    <input type="hidden" name="isEdition" th:value="${artwork.isEdition()}">
+                                    <label for="stockAmount">판매가능 수량</label>
+                                    <input type="number" name="stockAmount" class="form-control" id="stockAmount"
+                                           placeholder="판매가능 수량" required="required" th:value="${artwork.stockAmount}">
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div th:each="prevImages : ${artwork.artworkImages}"
+                                         class="form-group multiple-form-group">
+                                        <div class="form-group input-group">
+                                            <img class="preview" th:src="${prevImages.name}" alt="your image"/>
+                                            <!--                                            <input type="file" name="artworkImages[]" onchange="readURL(this);"-->
+                                            <!--                                                   class="imageUpload" disabled/>-->
+                                            <textarea name="descriptions[]" class="form-control" rows="3"
+                                                      placeholder="작품의 설명을 입력해주세요."
+                                                      th:text="${prevImages.description}"></textarea>
+                                            <!--                             <span class="input-group-btn">
+                                                                                   <button type="button"
+                                                                                           class="btn btn-default btn-remove">-</button>
+                                                                             </span>-->
+                                            <textarea name="descriptions[]" class="default-ta" rows="3" hidden="true"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <a type="button" class="btn btn-danger" th:href="@{/artwork/list}">취소</a>
+                            <input type="button" class="btn btn-primary" value="수정" id="submitBtn"
+                                   onclick="handleModify()">
+                            <!--    <div th:replace="fragments/footer :: footer"/>-->
+                        </div>
+                        <script src="/assets/scripts/imageUpload.js"></script>
+                        <script src="/assets/js/jquery-3.5.1.min.js"></script>
+                        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
+                        <!--                            <script src="/assets/selectTemplate/js/bootstrap-select.js"></script>-->
+                        <!--                            <link href="/assets/selectTemplate/css/bootstrap-select.css" rel="stylesheet" type="text/css"/>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END MAIN CONTENT -->
+</div>
+<!-- END MAIN -->
+<div class="clearfix"></div>
+<footer>
+    <div class="container-fluid">
+        <p class="copyright">&copy; 2017 <a href="https://www.themeineed.com" target="_blank">Theme I Need</a>. All
+            Rights Reserved.</p>
+    </div>
+</footer>
+</div>
+<!-- END WRAPPER -->
+<!-- Javascript -->
+
+<!--selectpicker-->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
+
+<script src="/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--<script src="/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>-->
+<script src="/assets/scripts/klorofil-common.js"></script>
+<script src="/assets/scripts/frameSelection.js"></script>
+<link rel="stylesheet" href="//rawgit.com/Soldier-B/jquery.toast/master/jquery.toast/jquery.toast.min.css"/>
+<script src="//rawgit.com/Soldier-B/jquery.toast/master/jquery.toast/jquery.toast.min.js"></script>
+<script type="text/javascript">
+    function verifySize(value) {
+        if (value <= 0)
+            return false;
+        return true;
+    }
+
+    function verifyEmptyValue(value, text) {
+        if (value === '' || value === null) {
+            $.toast('<h2>' + text + '</h2>', {
+                duration: 2000,
+                type: 'danger'
+            });
+            $('#submitBtn').show();
+            return false;
+        }
+        return true;
+    };
+
+    function handleModify() {
+        $('#submitBtn').hide();
+        if (!verifySize($('#price').val())) {
+            toastError('가격을 확인해주세요.');
+            $('#submitBtn').show();
+            return;
+        }
+        if (!verifySize($('#stockAmount').val())) {
+            toastError('판매가능수량을 최소 1개 이상으로 설정해야합니다.');
+            $('#submitBtn').show();
+            return;
+        }
+        if (!verifySize($('#width').val()) || !verifySize($('#height').val())) {
+            toastError('작품 사이즈를 확인해주세요.');
+            $('#submitBtn').show();
+            return;
+        }
+        dataSend();
+        return;
+    }
+
+    $(document).ready(function () {
+        $.toast.config.align = 'center';
+        $.toast.config.width = 400;
+    });
+
+    function dataSend() {
+        var formData = new FormData($("#modify-form")[0])
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+        var artworkId = $("#artworkId").val();
+        console.log(artworkId);
+        $.ajax({
+            async: false,
+            url: "/artwork/" + artworkId,
+            enctype: 'multipart/form-data',
+            contentType: false,
+            processData: false,
+            data: formData,
+            // dataType: 'json',
+            type: "POST",
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader(header, token);
+            },
+            success: function (data) {
+                toastInfo("작품이 수정되었습니다.")
+                setTimeout(function () {
+                    location.href = "/artwork/" + artworkId;
+                }, 2000);
+            },
+            error: function (data) {
+                $('#submitBtn').show();
+                var code = data.responseJSON.errCode;
+                var message = data.responseJSON.message;
+                var status = data.status;
+                if (code === "FUL_001")
+                    toastError('사진파일 크기는 10MB 미만으로 업로드해주세요!');
+                else if (code === "FUL_000")
+                    toastError('허용된 파일 개수를 초과 하였습니다.');
+                else if (code === "FUL_002")
+                    toastError('허용된 파일 총 용량을 초과하였습니다. ');
+                else if (code === "FUL_003")
+                    toastError('업로드된 사진이 없습니다.');
+                else if (code === "ETC_000")
+                    toastError('서버 에러입니다 잠시 후 다시 시도해주세요.');
+            }
+        });
+    }
+
+    function toastInfo(text) {
+        $.toast('<h2>' + text + '</h2>', {
+            duration: 1000,
+            type: 'info'
+        });
+        return;
+    };
+
+    function toastError(errorMessage) {
+        $.toast('<h3>' + errorMessage + '</h3>', {
+            duration: 2000,
+            type: 'danger'
+        });
+        return;
+    };
+</script>
+</body>
+</html>

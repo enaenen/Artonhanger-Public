@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <artwork id="1" member_id="1" title="머무는 시간" height="27.3" width="22.0" size="4" price="90000" delivery_price="3000"
+             delivery_state="ONSALE" photo_service="true" production_year="2020" shipping="SHIPPING" sold_out="false"
+             thumbnail="https://d3cr9r836ml7sc.cloudfront.net/artworkImages/17/111" is_enable="true" artwork_frame_id="1" imweb_id="1"
+             created_at="2021-01-06 18:04:55.765" updated_at="2021-01-06 18:04:55.765"/>
+    <artwork id="2" member_id="1" title="들판" height="27.3" width="22.0" size="4" price="90000" delivery_price="3000"
+             delivery_state="ONSALE" photo_service="true" production_year="2020" shipping="SHIPPING" sold_out="false"
+             thumbnail="https://d3cr9r836ml7sc.cloudfront.net/artworkImages/17/222" is_enable="false" artwork_frame_id="2"
+             created_at="2021-01-06 18:06:11.336" updated_at="2021-01-06 18:06:11.336"/>
+    <artwork id="3" member_id="1" title="아무도 모르는 들 2 " height="30.0" width="21.0" size="4" price="120000"
+             delivery_price="3000" delivery_state="ONSALE" photo_service="true" production_year="2019"
+             shipping="SHIPPING" sold_out="false" thumbnail="https://d3cr9r836ml7sc.cloudfront.net/artworkImages/17/333"
+             is_enable="true" artwork_frame_id="3" created_at="2021-01-06 18:07:36.18" updated_at="2021-01-06 18:07:36.18"/>
+    <artwork id="4" member_id="1" title="아무도 모르는 들" height="30.0" width="21.0" size="4" price="120000"
+             delivery_price="3000" delivery_state="ONSALE" photo_service="true" production_year="2019"
+             shipping="SHIPPING" sold_out="false" thumbnail="https://d3cr9r836ml7sc.cloudfront.net/artworkImages/17/444"
+             is_enable="true" created_at="2021-01-06 18:09:16.681" updated_at="2021-01-06 18:09:16.681"/>
+    <artwork id="5" member_id="1" title="용기" height="21.1" width="14.7" size="1" price="60000" delivery_price="3000"
+             delivery_state="ONSALE" photo_service="true" production_year="2019" shipping="SHIPPING" sold_out="false"
+             thumbnail="https://d3cr9r836ml7sc.cloudfront.net/artworkImages/17/555" is_enable="false"
+             created_at="2021-01-06 18:13:19.764" updated_at="2021-01-06 18:13:19.764"/>
+    <artwork id="6" member_id="2" title="기주럽케잌" height="30.0" width="22.0" size="4" price="200000" delivery_price="3000"
+             delivery_state="ONSALE" photo_service="true" production_year="2020" shipping="SHIPPING" sold_out="false"
+             thumbnail="https://d3cr9r836ml7sc.cloudfront.net/artworkImages/23/666" is_enable="true"
+             created_at="2021-01-06 18:23:49.148" updated_at="2021-01-06 18:23:49.148"/>
+    <artwork id="7" member_id="2" title="사랑에 빠진 다람쥐" height="43.0" width="30.0" size="6" price="400000"
+             delivery_price="3000" delivery_state="ONSALE" photo_service="true" production_year="2021"
+             shipping="SHIPPING" sold_out="false" thumbnail="https://d3cr9r836ml7sc.cloudfront.net/artworkImages/23/777"
+             is_enable="true" created_at="2021-01-06 18:25:54.284" updated_at="2021-01-06 18:25:54.284"/>
+    <artwork id="8" member_id="3" title="LOVE SHARK" height="90.0" width="70.0" size="30" price="790000"
+             delivery_price="5000" delivery_state="ONSALE" photo_service="false" production_year="2018"
+             shipping="SHIPPING" sold_out="false" thumbnail="https://d3cr9r836ml7sc.cloudfront.net/artworkImages/15/888"
+             is_enable="true" created_at="2021-01-08 16:46:47.122" updated_at="2021-01-08 16:46:47.122"/>
+    <artwork id="9" member_id="3" title="PEACE SHARK" height="90.0" width="70.0" size="30" price="490000"
+             delivery_price="5000" delivery_state="ONSALE" photo_service="false" production_year="2018"
+             shipping="SHIPPING" sold_out="false" thumbnail="https://d3cr9r836ml7sc.cloudfront.net/artworkImages/15/999"
+             is_enable="true" created_at="2021-01-08 16:51:10.366" updated_at="2021-01-08 16:51:10.366"/>
+    <artwork id="10" member_id="3" title="FAUST" height="90.0" width="70.0" size="30" price="390000"
+             delivery_price="5000" delivery_state="ONSALE" photo_service="false" production_year="2018"
+             shipping="SHIPPING" sold_out="false"
+             thumbnail="https://d3cr9r836ml7sc.cloudfront.net/artworkImages/15/1000" is_enable="true"
+             created_at="2021-01-08 16:54:16.888" updated_at="2021-01-08 16:54:16.888"/>
+</dataset>
