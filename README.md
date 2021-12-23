@@ -62,10 +62,11 @@ https://www.artonhanger.com/
 - 작품 관리
 
 
-# Simple Diagram
-<img src="https://user-images.githubusercontent.com/13278955/132170445-dbf834f6-f1f0-48bc-a4fc-99346660d832.jpg">
+# Entity Diagram
+![Main](https://user-images.githubusercontent.com/13278955/147191307-886ed001-8e70-4852-b972-2b129e1a7e29.jpg)
 
 # ERD
-<img src="https://user-images.githubusercontent.com/13278955/100709815-186f9480-33f2-11eb-82d2-a3b1d4e125db.png">
+
+
 
 
