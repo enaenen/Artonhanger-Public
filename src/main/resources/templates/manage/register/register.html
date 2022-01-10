@@ -52,8 +52,8 @@
                                 </div>
 
                                 <div class="form-input">
-                                    <label for="bankAccount" class="required">계좌번호<br>(작품판매로 인한 수익 발생시 이 계좌로 입금됩니다.)</label>
-                                    <input type="text" name="bankAccount" id="bankAccount" placeholder="수익 발생시 입금될 계좌입니다."/>
+                                    <label for="accountNumber" class="required">계좌번호<br>(작품판매로 인한 수익 발생시 이 계좌로 입금됩니다.)</label>
+                                    <input type="text" name="accountNumber" id="accountNumber" placeholder="수익 발생시 입금될 계좌입니다."/>
                                 </div>
                                 <div class="form-input">
                                     <label for="phoneNumber" class="required">휴대폰 번호</label>
@@ -143,7 +143,7 @@
                 !verifyEmptyValue($('#password').val(), '비밀번호를 입력해주세요.') ||
                 !verifyEmptyValue($('#passwordConfirm').val(), '비밀번호확인을 입력해주세요.') ||
                 !verifyEmptyValue($('#banks2').val(), '은행이름을 입력해주세요.') ||
-                !verifyEmptyValue($('#bankAccount').val(), '계쫘번호를 입력해주세요.') ||
+                !verifyEmptyValue($('#accountNumber').val(), '계좌번호를 입력해주세요.') ||
                 !verifyEmptyValue($('#phoneNumber').val(), '휴대폰 번호를 입력해주세요.')
             ) {
                 return;

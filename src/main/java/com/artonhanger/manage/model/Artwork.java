@@ -268,9 +268,8 @@ public class Artwork {
             ArtworkImage artworkImage = artworkImages.get(i);
             if (artworkImage == null)
                 return;
-            if (description == null || description.equals(""))
-                continue;
-            artworkImage.setDescription(description);
+            if (StringUtils.hasText(description))
+                artworkImage.setDescription(description);
         }
     }
 

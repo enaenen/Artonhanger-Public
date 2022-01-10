@@ -3,10 +3,11 @@ package com.artonhanger.manage.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import java.time.LocalDateTime;
 
 @Embeddable

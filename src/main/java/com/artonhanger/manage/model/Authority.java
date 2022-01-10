@@ -2,7 +2,6 @@ package com.artonhanger.manage.model;
 
 
 import com.artonhanger.manage.enums.UserRole;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

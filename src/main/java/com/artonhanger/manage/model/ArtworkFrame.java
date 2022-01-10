@@ -1,6 +1,5 @@
 package com.artonhanger.manage.model;
 
-import com.artonhanger.manage.model.dto.ArtworkUploadDto;
 import lombok.*;
 
 import javax.persistence.*;
