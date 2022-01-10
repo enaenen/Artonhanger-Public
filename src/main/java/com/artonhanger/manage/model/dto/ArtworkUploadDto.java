@@ -4,14 +4,15 @@ import com.artonhanger.manage.enums.CategoryEnum;
 import com.artonhanger.manage.enums.ColorEnum;
 import com.artonhanger.manage.enums.MaterialEnum;
 import com.artonhanger.manage.enums.ShippingEnum;
-import com.artonhanger.manage.model.*;
+import com.artonhanger.manage.model.Artwork;
+import com.artonhanger.manage.model.ArtworkFrame;
+import com.artonhanger.manage.model.ArtworkImage;
+import com.artonhanger.manage.model.Member;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @NoArgsConstructor
 @AllArgsConstructor

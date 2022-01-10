@@ -15,7 +15,7 @@ public class RegisterUserDto {
     private String password;
 //    private BankList banks;
     private String banks;
-    private String account;
+    private String accountNumber;
     private String phoneNumber;
     private String introduction;
     private MultipartFile profileImage;

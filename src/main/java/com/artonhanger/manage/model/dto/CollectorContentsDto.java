@@ -1,7 +1,10 @@
 package com.artonhanger.manage.model.dto;
 
 import com.artonhanger.manage.model.CollectorContents;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;

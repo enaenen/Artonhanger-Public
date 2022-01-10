@@ -1,6 +1,7 @@
 package com.artonhanger.manage.model.dto;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @Getter
