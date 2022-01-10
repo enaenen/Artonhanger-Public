@@ -49,7 +49,7 @@ public class MemberRegisterService {
 
         Artist artist = Artist.builder().member(savedMember)
                 .bankAccount(Artist.BankAccount.builder()
-                        .account(registerUserDto.getAccount())
+                        .account(registerUserDto.getAccountNumber())
                         .bankName(registerUserDto.getBanks())
                         .accountHolder(registerUserDto.getName())
                         .build())

@@ -2,18 +2,15 @@ package com.artonhanger.manage.service;
 
 import com.artonhanger.manage.model.Artwork;
 import com.artonhanger.manage.model.ArtworkImage;
-import com.artonhanger.manage.model.Member;
 import com.artonhanger.manage.model.dto.ArtworkImageUploadDto;
 import com.artonhanger.manage.model.dto.ArtworkUploadDto;
 import com.artonhanger.manage.respository.ArtworkRepository;
-import com.artonhanger.manage.respository.MemberRepository;
-import com.artonhanger.manage.service.dto.UploadResult;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service

@@ -1,10 +1,10 @@
 package com.artonhanger.manage.service;
 
-import com.artonhanger.manage.model.Artist;
-import com.artonhanger.manage.model.dto.ModifyProfileDto;
 import com.artonhanger.manage.enums.ErrorEnum;
 import com.artonhanger.manage.exception.AOHException;
+import com.artonhanger.manage.model.Artist;
 import com.artonhanger.manage.model.Member;
+import com.artonhanger.manage.model.dto.ModifyProfileDto;
 import com.artonhanger.manage.model.dto.PasswordModifyDto;
 import com.artonhanger.manage.respository.MemberRepository;
 import com.artonhanger.manage.utils.PasswordUtil;

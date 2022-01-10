@@ -1,6 +1,5 @@
 package com.artonhanger.manage.service;
 
-import com.artonhanger.manage.model.CollectorContents;
 import com.artonhanger.manage.model.dto.CollectorContentsDto;
 import com.artonhanger.manage.respository.CollectorContentsRepository;
 import com.artonhanger.manage.service.dto.MultipartFileUploadRequest;
@@ -8,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;

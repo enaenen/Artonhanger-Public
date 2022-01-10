@@ -1,6 +1,5 @@
 package com.artonhanger.manage.service;
 
-import com.artonhanger.manage.model.ArtworkImage;
 import com.artonhanger.manage.model.dto.ArtworkImageUploadDto;
 import com.artonhanger.manage.service.dto.MultipartFileUploadRequest;
 import com.artonhanger.manage.service.dto.UploadResult;
