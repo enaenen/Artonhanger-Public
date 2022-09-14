@@ -1,5 +1,6 @@
 ARTONHANGER PUBLIC
-URL : https://manage.artonhanger.com/
+####(현재 서비스 종료)
+[Deprecated] URL : ~~https://manage.artonhanger.com/~~
 
 
 
@@ -21,7 +22,7 @@ Promotion Images
 </div>
 
 ## Web
-https://www.artonhanger.com/
+[Deprecated] ~~https://www.artonhanger.com/~~
 
 # 사용 기술
 
