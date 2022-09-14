@@ -1,5 +1,5 @@
 # ARTONHANGER PUBLIC
-(현재 서비스 종료)
+(현재 서비스 종료) 2021.01 ~ 2022.05
 ### [Deprecated] 
 URL : ~~https://manage.artonhanger.com/~~
 
