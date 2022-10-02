@@ -71,8 +71,4 @@ Promotion Images
 
 ![Main](https://user-images.githubusercontent.com/13278955/147191307-886ed001-8e70-4852-b972-2b129e1a7e29.jpg)
 
-# ERD
-
-
-
 
